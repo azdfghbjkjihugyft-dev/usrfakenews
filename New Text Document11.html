@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>usrfakenews.com - ȘTIRILE ZILEI</title>
+
+<style>
+:root{
+  --bg:#f5f6f8; --card:#fff; --text:#111; --muted:#666; --primary:#e10600;
+}
+.dark{
+  --bg:#0f1115; --card:#1b1e24; --text:#f1f1f1; --muted:#aaa;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+}
+
+/* HEADER */
+header{background:#111;color:#fff}
+.topbar{
+  max-width:1200px;margin:auto;padding:14px 20px;
+  display:flex;justify-content:space-between;align-items:center
+}
+.logo{font-weight:900;font-size:20px}
+.toggle{background:none;border:1px solid #555;color:#fff;padding:6px 10px;border-radius:6px;cursor:pointer}
+
+/* BREAKING NEWS */
+.breaking{
+  background:var(--primary);color:#fff;overflow:hidden;white-space:nowrap
+}
+.breaking span{
+  display:inline-block;padding-left:100%;
+  animation:scroll 25s linear infinite;font-weight:700
+}
+@keyframes scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-100%)}
+}
+
+/* LAYOUT */
+main{
+  max-width:1200px;margin:30px auto;padding:0 16px;
+  display:grid;grid-template-columns:2fr 1fr;gap:24px
+}
+@media(max-width:900px){
+  main{grid-template-columns:1fr}
+}
+
+/* ARTICLE CARD */
+.card{
+  background:var(--card);border-radius:12px;padding:26px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);margin-bottom:24px
+}
+.badge{
+  display:inline-block;background:var(--primary);color:#fff;
+  font-weight:800;font-size:12px;padding:6px 10px;border-radius:999px
+}
+.category{color:var(--primary);font-weight:700;font-size:13px;text-transform:uppercase;margin-top:8px}
+h1{font-size:32px;line-height:1.25;margin:10px 0}
+h2{font-size:20px;margin:0 0 8px}
+.meta{color:var(--muted);font-size:14px;margin-bottom:18px}
+p{font-size:17px;margin-bottom:16px}
+
+/* IMAGE + STAMP */
+.figure{margin:22px 0}
+.img-wrap{position:relative}
+.img-wrap img{width:100%;border-radius:10px;cursor:zoom-in}
+
+/* Distressed stamp (doar pe articol principal) */
+.stamp{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  pointer-events:none
+}
+.stamp span{
+  font-size:68px;font-weight:900;color:#c40000;
+  border:8px solid #c40000;padding:18px 36px;
+  transform:rotate(-14deg);
+  opacity:.3;text-transform:uppercase;letter-spacing:2px;
+  background:repeating-linear-gradient(
+    45deg, rgba(0,0,0,.18) 0 2px, transparent 2px 6px
+  );
+}
+
+/* Caption */
+figcaption{
+  font-size:13px;color:var(--muted);margin-top:8px;
+  border-left:3px solid var(--primary);padding-left:10px
+}
+
+/* Lightbox */
+#zoom{display:none}
+.lightbox{
+  position:fixed;inset:0;background:rgba(0,0,0,.85);
+  display:none;align-items:center;justify-content:center;z-index:999
+}
+#zoom:checked + .lightbox{display:flex}
+.lightbox img{max-width:92%;max-height:92%;border-radius:10px;cursor:zoom-out}
+
+/* SIDEBAR */
+.sidebar .card h2{font-size:18px}
+.sidebar .meta{font-size:12px}
+
+/* FOOTER */
+footer{text-align:center;color:var(--muted);font-size:13px;padding:20px}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="logo">usrfakenews.com</div>
+    <button class="toggle" onclick="document.body.classList.toggle('dark')">🌙 Dark mode</button>
+  </div>
+  <div class="breaking">
+    <span>
+      🚨 BREAKING NEWS: CCR anulează evenimente informale • Tensiuni interne la instituții publice • Regulamente interne revizuite •
+    </span>
+  </div>
+</header>
+
+<main>
+
+<!-- MAIN ARTICLE -->
+<section>
+  <article class="card">
+    <span class="badge">⚠️ EXCLUSIV</span>
+    <div class="category">Justiție</div>
+
+    <h1>CCR a anulat Secret Santa la Serviciul Achiziții din cadrul IGI</h1>
+    <div class="meta">17 decembrie 2025 • Redacția</div>
+
+    <p>
+      Curtea Constituțională a României a decis anularea evenimentului „Secret Santa” organizat
+      la Serviciul Achiziții al IGI, invocând depășirea limitelor neutralității funcției publice.
+    </p>
+
+    <figure class="figure">
+      <label class="img-wrap" for="zoom">
+        <img src="secret.jpg" alt="Eveniment intern la IGI">
+        <div class="stamp"><span>BUSTED</span></div>
+      </label>
+      <figcaption>
+        Imagine surprinsă în timpul unui eveniment intern devenit subiect de analiză constituțională.
+      </figcaption>
+    </figure>
+
+    <input type="checkbox" id="zoom">
+    <div class="lightbox">
+      <label for="zoom"><img src="secret.jpg" alt="Zoom imagine"></label>
+    </div>
+
+    <p>
+      În relatarea satirică a cazului, tensiunile ar fi fost amplificate de două personaje – Mirela Nervoasa și Sabin Jidanul
+    </p>
+
+    <p>
+      CCR a concluzionat că presiunea socială generată de astfel de inițiative poate crea dezechilibre incompatibile cu statutul funcționarului public.
+    </p>
+  </article>
+
+  <!-- ARTICLE 2 -->
+  <article class="card">
+    <div class="category">Administrație</div>
+    <h2>Instituțiile publice renunță la petrecerile interne după decizia CCR</h2>
+    <div class="meta">Analiză • 16 decembrie 2025</div>
+
+    <figure class="figure">
+      <label class="img-wrap" for="zoom2">
+        <img src="administratie.jpg" alt="Instituții publice">
+      </label>
+      <figcaption>
+        Multe instituții suspendă activitățile extra-profesionale după decizia CCR.
+      </figcaption>
+    </figure>
+
+    <input type="checkbox" id="zoom2">
+    <div class="lightbox">
+      <label for="zoom2"><img src="administratie.jpg" alt="Zoom imagine"></label>
+    </div>
+
+    <p>
+      Suspendarea activităților informale se face pentru a preveni conflicte interne și posibile sesizări juridice.
+    </p>
+  </article>
+
+  <!-- ARTICLE 3 -->
+  <article class="card">
+    <div class="category">Social</div>
+    <h2>Funcționarii publici cer reguli clare pentru evenimente extra-profesionale</h2>
+    <div class="meta">Știre • 15 decembrie 2025</div>
+
+    <figure class="figure">
+      <label class="img-wrap" for="zoom3">
+        <img src="social.jpg" alt="Funcționari publici">
+      </label>
+      <figcaption>
+        Sindicatele solicită ghiduri oficiale pentru separarea activităților sociale de cele profesionale.
+      </figcaption>
+    </figure>
+
+    <input type="checkbox" id="zoom3">
+    <div class="lightbox">
+      <label for="zoom3"><img src="social.jpg" alt="Zoom imagine"></label>
+    </div>
+
+    <p>
+      Claritatea regulilor ajută la prevenirea presiunilor sociale și a conflictelor între angajați.
+    </p>
+  </article>
+</section>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="card">
+    <h2>Opinii</h2>
+    <figure class="figure">
+      <img src="opinie.jpg" alt="Opinii">
+      <figcaption>
+        Editorial: Unde se termină buna dispoziție și începe presiunea socială?
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="card">
+    <h2>Ultima oră</h2>
+    <figure class="figure">
+      <img src="ultima_ora.jpg" alt="Ultima ora">
+      <figcaption>
+        Cele mai recente reacții după decizia CCR.
+      </figcaption>
+    </figure>
+  </div>
+</aside>
+
+</main>
+
+<footer>© 2025 usrfakenews.com</footer>
+
+</body>
+</html>
